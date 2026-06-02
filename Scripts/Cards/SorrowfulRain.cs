@@ -20,7 +20,7 @@ public class SorrowfulRain : BaseCardModel
     protected override IEnumerable<DynamicVar> CanonicalVars =>
         new List<DynamicVar>()
         {
-            new PowerVar<SorrowfulRainPower>(2m),
+            new PowerVar<SorrowfulRainPower>(4m),
         };
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips

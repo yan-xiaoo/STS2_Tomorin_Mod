@@ -8,6 +8,7 @@ using MegaCrit.Sts2.Core.ValueProps;
 using STS2_Tomorin_Mod.CardPools;
 using STS2_Tomorin_Mod.Cards.Base;
 using STS2_Tomorin_Mod.Powers;
+using BaseLib.Extensions;
 
 namespace STS2_Tomorin_Mod.Cards;
 
@@ -21,7 +22,7 @@ public class CrychicIsOver : BaseCardModel
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new BlockVar(4m, ValueProp.Move),
-        new PowerVar<AtFieldPower>(1m)
+        new PowerVar<AtFieldPower>(2m)
     ];
 
     public CrychicIsOver() :
@@ -67,5 +68,6 @@ public class CrychicIsOver : BaseCardModel
     protected override void OnUpgrade()
     {
         base.DynamicVars.Block.UpgradeValueBy(1m);
+        base.DynamicVars["AtFieldPower"].UpgradeValueBy(1m);
     }
 }

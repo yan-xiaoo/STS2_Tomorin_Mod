@@ -23,7 +23,7 @@
   "STS2_TOMORIN_MOD-CRUMPLED_PAPER.title": "压皱的残页",
   "STS2_TOMORIN_MOD-MIDNIGHT_COFFEE.description": "获得{Energy:energyIcons()}",
   "STS2_TOMORIN_MOD-MIDNIGHT_COFFEE.title": "深夜的罐装咖啡",
-  "STS2_TOMORIN_MOD-BROKEN_NOTE.description": "#获得[blue]!Block![/blue]点[gold]格挡[/gold]，本回合[gold]心之壁[/gold]不会因为敌人的攻击而减少。",
+  "STS2_TOMORIN_MOD-BROKEN_NOTE.description": "#获得[blue]!Block![/blue]点[gold]格挡[/gold]，本回合[gold]心之壁[/gold]不会因为敌人的攻击而减少，且反弹等于[gold]心之壁[/gold]层数的伤害。",
   "STS2_TOMORIN_MOD-BROKEN_NOTE.title": "满是划痕的笔记本",
   "STS2_TOMORIN_MOD-STAR_STONE.description": "#氪！",
   "STS2_TOMORIN_MOD-STAR_STONE.title": "星石",
@@ -111,7 +111,7 @@
   "STS2_TOMORIN_MOD-TAKAMASU_CALCULUS.title": "高松积分",
   "STS2_TOMORIN_MOD-TAKAMASU_CALCULUS.description": "#获得[blue]!Block![/blue]点[gold]格挡[/gold]。\n造成[blue]!Damage![/blue]点伤害。\n获得[blue]!AtFieldPower![/blue]层[gold]心之壁[/gold]。\n每次打出此卡，其数值在本局游戏中永久增加-[blue]!Increase![/blue]-+!Increase!+点。",
   "STS2_TOMORIN_MOD-CRYCHIC_IS_OVER.title": "结束的Crychic",
-  "STS2_TOMORIN_MOD-CRYCHIC_IS_OVER.description": "#舍弃所有手牌。每舍弃一张手牌，获得-[blue]!Block![/blue]-+!Block!+点[gold]格挡[/gold]。获得[blue]!AtFieldPower![/blue]层[gold]心之壁[/gold]。",
+  "STS2_TOMORIN_MOD-CRYCHIC_IS_OVER.description": "#舍弃所有手牌。每舍弃一张手牌，获得-[blue]!Block![/blue]-+!Block!+点[gold]格挡[/gold]和[blue]!AtFieldPower![/blue]层[gold]心之壁[/gold]。",
   "STS2_TOMORIN_MOD-DO_EVERYTHING.title": "我什么都会做的",
   "STS2_TOMORIN_MOD-DO_EVERYTHING.description": "#战斗结束后，获得-[blue]!DoEverythingPower![/blue]-+!DoEverythingPower!+金币。立刻结束你的回合。",
   "STS2_TOMORIN_MOD-THINKING_YOURSELF.title": "只想着自己呢",
@@ -177,5 +177,7 @@
   "STS2_TOMORIN_MOD-TAKI_INSPIRATION.title": "灵感赋予",
   "STS2_TOMORIN_MOD-TAKI_INSPIRATION.description": "#选择时：手牌、抽牌堆、弃牌堆、消耗堆中的所有卡牌获得本次战斗中获得[gold]灵感[/gold]。",
   "STS2_TOMORIN_MOD-EGAKUMIRAI.title": "描绘未来",
-  "STS2_TOMORIN_MOD-EGAKUMIRAI.description": "#从手牌中选择至多2张[gold]状态[/gold]牌并[gold]消耗[/gold]。"
+  "STS2_TOMORIN_MOD-EGAKUMIRAI.description": "#从手牌中选择至多2张[gold]状态[/gold]牌并[gold]消耗[/gold]。",
+  "STS2_TOMORIN_MOD-DEJECTED.title": "忧郁",
+  "STS2_TOMORIN_MOD-DEJECTED.description": "#获得[blue]!Block![/blue]点[gold]格挡[/gold]，将一张[gold]满是划痕的笔记本[/gold]加入手牌。"
 }

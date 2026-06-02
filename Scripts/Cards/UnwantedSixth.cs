@@ -14,7 +14,7 @@ namespace STS2_Tomorin_Mod.Cards;
 
 /// <summary>
 /// 不被需要的第六人
-/// 蓝卡 0费 技能 本回合每次获得格挡时，额外获得1->2层心之壁，并将一张压皱的残页加入手牌
+/// 蓝卡 0费 技能 本回合每次获得格挡时，额外获得2>4层心之壁，并将一张压皱的残页加入手牌
 /// </summary>
 [Pool(typeof(TomorinCardPool))]
 public class UnwantedSixth : BaseCardModel
@@ -22,7 +22,7 @@ public class UnwantedSixth : BaseCardModel
     protected override IEnumerable<DynamicVar> CanonicalVars =>
         new List<DynamicVar>()
         {
-            new PowerVar<UnwantedSixthPower>(1m),
+            new PowerVar<UnwantedSixthPower>(2m),
         };
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips
@@ -55,6 +55,6 @@ public class UnwantedSixth : BaseCardModel
 
     protected override void OnUpgrade()
     {
-        base.DynamicVars["UnwantedSixthPower"].UpgradeValueBy(1m);
+        base.DynamicVars["UnwantedSixthPower"].UpgradeValueBy(2m);
     }
 }

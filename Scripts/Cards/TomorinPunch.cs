@@ -23,7 +23,7 @@ public class TomorinPunch : BaseCardModel
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new DamageVar(9m, ValueProp.Move),
-        new PowerVar<AtFieldPower>(2m)
+        new PowerVar<AtFieldPower>(3m)
     ];
 
     public TomorinPunch() :
@@ -61,6 +61,6 @@ public class TomorinPunch : BaseCardModel
     protected override void OnUpgrade()
     {
         base.DynamicVars.Damage.UpgradeValueBy(3m);
-        DynamicVars[AtFieldPower.DefaultName].UpgradeValueBy(1m);
+        DynamicVars[AtFieldPower.DefaultName].UpgradeValueBy(2m);
     }
 }

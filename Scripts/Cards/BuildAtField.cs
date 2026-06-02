@@ -20,7 +20,7 @@ public class BuildAtField : BaseCardModel
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new CardsVar(1),
-        new PowerVar<AtFieldPower>(1m)
+        new PowerVar<AtFieldPower>(2m)
     ];
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips
@@ -49,6 +49,6 @@ public class BuildAtField : BaseCardModel
 
     protected override void OnUpgrade()
     {
-        DynamicVars["AtFieldPower"].UpgradeValueBy(1);
+        DynamicVars["AtFieldPower"].UpgradeValueBy(2);
     }
 }

@@ -112,7 +112,7 @@ public class AtFieldPower : BasePowerModel
             // 如果具有“曾经的归宿”效果或者立希的效果则不减少
             if (!Owner.HasPower<OnceHomePower>() && !Owner.HasPower<TakiAtFieldPower>())
             {     
-                int amount = Amount - 3;
+                int amount = Amount / 2;
                 await PowerCmd.ModifyAmount(this, amount - Amount, null, null);
             }
         }

@@ -16,7 +16,7 @@ namespace STS2_Tomorin_Mod.Cards;
 
 /// <summary>
 /// 西瓜虫
-/// 白卡 1费 技能 获得8->10点格挡，3-4层心之壁
+/// 白卡 1费 技能 获得8->10点格挡，4->5层心之壁
 /// </summary>
 [Pool(typeof(TomorinCardPool))]
 public class Woodlouse : BaseCardModel
@@ -25,7 +25,7 @@ public class Woodlouse : BaseCardModel
         new List<DynamicVar>()
         {
             new BlockVar(8m, ValueProp.Move),
-            new PowerVar<AtFieldPower>(3m),
+            new PowerVar<AtFieldPower>(4m),
         };
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips

@@ -25,7 +25,7 @@ public class WantBeYourGod : BaseCardModel
         {
             new ComposeVar(new Dictionary<CardType, int>() { { CardType.Skill, 1 } }, ModelDb.Card<WantBeYourGodToken>()),
             new BlockVar(7m, ValueProp.Move),
-            new PowerVar<AtFieldPower>(1m)
+            new PowerVar<AtFieldPower>(3m)
         };
 
     public WantBeYourGod() :

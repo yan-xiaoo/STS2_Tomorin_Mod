@@ -21,7 +21,7 @@ public class WantBeYourGodToken : BaseCardModel
         new List<DynamicVar>()
         {
             new BlockVar(9m, ValueProp.Move),
-            new PowerVar<AtFieldPower>(3m)
+            new PowerVar<AtFieldPower>(5m)
         };
 
     public WantBeYourGodToken() :

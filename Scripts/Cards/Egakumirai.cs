@@ -26,7 +26,7 @@ public class Egakumirai : BaseCardModel
         HoverTipFactory.FromKeyword(CardKeyword.Exhaust)
     ];
 
-    public Egakumirai() : base(0, CardType.Skill, CardRarity.Common, TargetType.Self)
+    public Egakumirai() : base(0, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
     {
     }
 
