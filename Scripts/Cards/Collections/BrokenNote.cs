@@ -52,14 +52,6 @@ public class BrokenNote() :
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         await CreatureCmd.GainBlock(base.Owner.Creature, base.DynamicVars.Block, cardPlay);
-        if (base.Owner.Creature.HasPower<AtFieldPower>())
-        {
-            var atFieldPower = base.Owner.Creature.GetPower<AtFieldPower>();
-            if (atFieldPower != null)
-            {
-                atFieldPower.ShouldDamageEnemy = true;
-            }
-        }
         await PowerCmd.Apply<BrokenNotePower>(base.Owner.Creature, 1m, base.Owner.Creature, this);
     }
 }

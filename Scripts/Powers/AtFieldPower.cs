@@ -28,7 +28,10 @@ public class AtFieldPower : BasePowerModel
 
     public static bool ShouldDeduceAtFieldPower = true;
     // 心之壁是否会反伤，初始为 false，通过消耗“满是划痕的笔记本”可以开启一个回合，通过”泪水之名“能力可以永久开启。
-    public bool ShouldDamageEnemy = false;
+    private bool CanDamageEnemy =>
+    Owner.HasPower<BrokenNotePower>()
+    || Owner.HasPower<NameOfTearPower>()
+    || Owner.HasPower<TakiAtFieldPower>();
 
     protected override List<IHoverTip> ExtraHoverTips =>
     [
@@ -112,12 +115,6 @@ public class AtFieldPower : BasePowerModel
                 int amount = Amount - 3;
                 await PowerCmd.ModifyAmount(this, amount - Amount, null, null);
             }
-            // 心之壁是否对敌人反伤
-            // 如果不具有“泪水之名”能力或立希的效果则强制关闭反伤
-            if (!Owner.HasPower<NameOfTearPower>() && !Owner.HasPower<TakiAtFieldPower>())
-            {
-                ShouldDamageEnemy = false;
-            }
         }
     }
 
@@ -135,9 +132,8 @@ public class AtFieldPower : BasePowerModel
     {
         if (target == base.Owner && dealer != null && (props.IsPoweredAttack_() || cardSource is Omnislice))
         {
-            if (ShouldDamageEnemy)
+            if (CanDamageEnemy)
             {
-                //是否伤害翻倍
                 var damage = this.Amount;
                 Flash();
                 await CreatureCmd.Damage(choiceContext, dealer, damage, ValueProp.Unpowered | ValueProp.SkipHurtAnim,

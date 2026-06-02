@@ -19,20 +19,6 @@ public class TakiAtFieldPower : BasePowerModel
     public override PowerStackType StackType => PowerStackType.Counter;
 
     private int _appliedStrength;
-
-    public override Task AfterApplied(Creature? applier, CardModel? cardSource)
-    {
-        if (applier == Owner && base.Owner.HasPower<AtFieldPower>())
-        {
-            var power = base.Owner.GetPower<AtFieldPower>();
-            if (power != null)
-            {
-                power.ShouldDamageEnemy = true;
-            }
-        }
-        return base.AfterApplied(applier, cardSource);
-    }
-
     public override async Task AfterPlayerTurnStart(PlayerChoiceContext choiceContext, Player player)
     {
         if (player != base.Owner.Player) return;

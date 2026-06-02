@@ -1,5 +1,7 @@
 ﻿using BaseLib.Abstracts;
+using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Entities.Powers;
+using MegaCrit.Sts2.Core.Models;
 
 namespace STS2_Tomorin_Mod.Powers;
 
