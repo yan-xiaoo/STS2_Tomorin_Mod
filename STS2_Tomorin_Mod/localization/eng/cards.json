@@ -193,5 +193,8 @@
   "STS2_TOMORIN_MOD-TAKI_AT_FIELD.title": "AT Field",
   "STS2_TOMORIN_MOD-TAKI_AT_FIELD.description": "When chosen: At the start of each turn, gain temporary Strength equal to your AT Field. NL AT Field no longer halves at turn start.",
   "STS2_TOMORIN_MOD-TAKI_INSPIRATION.title": "Inspiration",
-  "STS2_TOMORIN_MOD-TAKI_INSPIRATION.description": "When chosen: All cards in your hand, draw pile, discard pile, NL and exhaust pile gain Inspiration this turn."
+  "STS2_TOMORIN_MOD-TAKI_INSPIRATION.description": "When chosen: All cards in your hand, draw pile, discard pile, NL and exhaust pile gain Inspiration this turn.",
+  "STS2_TOMORIN_MOD-EGAKUMIRAI.title": "Egakumirai",
+  "STS2_TOMORIN_MOD-EGAKUMIRAI.description": "Choose up to 2 [gold]Status[/gold] cards from your hand. [gold]Exhaust[/gold] them.",
+  "STS2_TOMORIN_MOD-EGAKUMIRAI.upgrade_description": "[gold]Retain[/gold]\nChoose up to 2 [gold]Status[/gold] cards from your hand. [gold]Exhaust[/gold] them."
 }

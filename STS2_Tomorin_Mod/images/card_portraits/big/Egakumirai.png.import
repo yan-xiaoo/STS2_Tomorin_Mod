@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b2vfbd3o2lfl3"
-path="res://.godot/imported/char_select_Tomorin.png-335bdb1a93f4b3df4ec8c53906d0ca9b.ctex"
+uid="uid://jqvaqobykeck"
+path="res://.godot/imported/Egakumirai.png-faa5c25f61df44a86109aebdb068c133.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://STS2_Tomorin_Mod/images/charui/char_select_Tomorin.png"
-dest_files=["res://.godot/imported/char_select_Tomorin.png-335bdb1a93f4b3df4ec8c53906d0ca9b.ctex"]
+source_file="res://STS2_Tomorin_Mod/images/card_portraits/big/Egakumirai.png"
+dest_files=["res://.godot/imported/Egakumirai.png-faa5c25f61df44a86109aebdb068c133.ctex"]
 
 [params]
 

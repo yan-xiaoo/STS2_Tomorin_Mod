@@ -20,7 +20,7 @@ public class MygoTogether : BaseCardModel
         [new PowerVar<IntangiblePower>(1m)];
 
     public MygoTogether() :
-        base(3, CardType.Skill, CardRarity.Rare, TargetType.AllAllies)
+        base(2, CardType.Skill, CardRarity.Rare, TargetType.AllAllies)
     {
     }
 

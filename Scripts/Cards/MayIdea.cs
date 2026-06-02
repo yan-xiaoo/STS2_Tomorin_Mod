@@ -15,7 +15,7 @@ namespace STS2_Tomorin_Mod.Cards;
 [Pool(typeof(TomorinCardPool))]
 public class MayIdea : BaseCardModel
 {
-    public MayIdea() : base(3, CardType.Power, CardRarity.Rare, TargetType.Self) { }
+    public MayIdea() : base(1, CardType.Power, CardRarity.Rare, TargetType.Self) { }
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {

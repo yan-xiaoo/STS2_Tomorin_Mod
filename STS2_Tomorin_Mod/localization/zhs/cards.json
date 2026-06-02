@@ -130,7 +130,7 @@
   "STS2_TOMORIN_MOD-REPRODUCTION.title": "再生产",
   "STS2_TOMORIN_MOD-REPRODUCTION.description": "消耗手牌中的一张[gold]状态[/gold]牌。\n获得{Energy:energyIcons()}。",
   "STS2_TOMORIN_MOD-REPRODUCTION.upgrade_description": "消耗手牌中的一张[gold]状态[/gold]牌。\n获得{Energy:energyIcons()}。",
-  "STS2_TOMORIN_MOD-GOING_ALL_OUT.description": "选择一名敌人，将其本回合意图修改为：\n造成[blue]1[/blue]点伤害[blue]3[/blue]次",
+  "STS2_TOMORIN_MOD-GOING_ALL_OUT.description": "选择一名敌人，将其本回合意图修改为：\n造成[blue]1[/blue]点伤害。",
   "STS2_TOMORIN_MOD-GOING_ALL_OUT.title": "拼命",
   "STS2_TOMORIN_MOD-NAME_OF_TEAR.description": "自身的[gold]心之壁[/gold]对敌人造成的伤害翻倍。\n 该能力无法叠加。",
   "STS2_TOMORIN_MOD-NAME_OF_TEAR.title": "泪水之名",
@@ -213,5 +213,8 @@
   "STS2_TOMORIN_MOD-TAKI_AT_FIELD.title": "心之壁",
   "STS2_TOMORIN_MOD-TAKI_AT_FIELD.description": "选择时：每回合开始时，获得[gold]心之壁[/gold]层数的临时力量。\n[gold]心之壁[/gold]不再每回合减半。",
   "STS2_TOMORIN_MOD-TAKI_INSPIRATION.title": "灵感赋予",
-  "STS2_TOMORIN_MOD-TAKI_INSPIRATION.description": "选择时：手牌、抽牌堆、弃牌堆、消耗堆中的所有卡牌获得本次战斗中获得[gold]灵感[/gold]。"
+  "STS2_TOMORIN_MOD-TAKI_INSPIRATION.description": "选择时：手牌、抽牌堆、弃牌堆、消耗堆中的所有卡牌获得本次战斗中获得[gold]灵感[/gold]。",
+  "STS2_TOMORIN_MOD-EGAKUMIRAI.title": "描绘未来",
+  "STS2_TOMORIN_MOD-EGAKUMIRAI.description": "从手牌中选择至多2张[gold]状态[/gold]牌并[gold]消耗[/gold]。",
+  "STS2_TOMORIN_MOD-EGAKUMIRAI.upgrade_description": "[gold]保留[/gold]\n从手牌中选择至多2张[gold]状态[/gold]牌并[gold]消耗[/gold]。"
 }
