@@ -25,7 +25,7 @@ public class StayUpLate : BaseCardModel
         {
             var list = base.ExtraHoverTips.ToList();
             list.Add(HoverTipFactory.FromPower<AtFieldPower>());
-            list.Add(HoverTipFactory.FromCard<MidnightCoffee>(base.IsUpgraded));
+            list.Add(HoverTipFactory.FromCard<MidnightCoffee>(false));
             return list;
         }
     }

@@ -40,7 +40,7 @@ public class AtField : BaseCardModel
         get
         {
             var list = base.ExtraHoverTips.ToList();
-            list.Add(HoverTipFactory.FromCard<BrokenNote>(base.IsUpgraded));
+            list.Add(HoverTipFactory.FromCard<BrokenNote>(false));
             list.Add(HoverTipFactory.FromPower<AtFieldPower>());
             return list;
         }

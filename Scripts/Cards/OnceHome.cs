@@ -26,7 +26,7 @@ public class OnceHome : BaseCardModel
         {
             var list = base.ExtraHoverTips.ToList();
             list.Add(HoverTipFactory.FromPower<AtFieldPower>());
-            list.Add(HoverTipFactory.FromCard<BrokenNote>(base.IsUpgraded));
+            list.Add(HoverTipFactory.FromCard<BrokenNote>(false));
             return list;
         }
     }
