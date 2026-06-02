@@ -20,7 +20,7 @@ public class MygoTogether : BaseCardModel
         [new PowerVar<IntangiblePower>(1m)];
 
     public MygoTogether() :
-        base(2, CardType.Skill, CardRarity.Rare, TargetType.AllAllies)
+        base(3, CardType.Skill, CardRarity.Rare, TargetType.AllAllies)
     {
     }
 
@@ -32,6 +32,7 @@ public class MygoTogether : BaseCardModel
         {
             var list = base.CanonicalKeywords.ToList();
             list.Add(CardKeyword.Exhaust);
+            list.Add(CardKeyword.Retain);
             return list;
         }
     }
@@ -48,7 +49,7 @@ public class MygoTogether : BaseCardModel
 
     protected override void OnUpgrade()
     {
-        // 升级后获得保留关键词
-        AddKeyword(CardKeyword.Retain);
+        // 升级后费用减少 1
+        MockSetEnergyCost(new CardEnergyCost(this, 2, false));
     }
 }
