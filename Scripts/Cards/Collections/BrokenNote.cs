@@ -13,7 +13,7 @@ namespace STS2_Tomorin_Mod.Cards.Collections;
 /// <summary>
 /// 满是划痕的笔记本
 /// 搜集品 tomorin
-/// 获得5点防御，本回合[心之壁]不会因为敌人的攻击而减少
+/// 获得5点防御，本回合[心之壁]不会因为敌人的攻击而减少，且本回合内可以反伤
 /// </summary>
 
 
@@ -52,6 +52,14 @@ public class BrokenNote() :
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         await CreatureCmd.GainBlock(base.Owner.Creature, base.DynamicVars.Block, cardPlay);
-		await PowerCmd.Apply<BrokenNotePower>(base.Owner.Creature, 1m, base.Owner.Creature, this);
+        if (base.Owner.Creature.HasPower<AtFieldPower>())
+        {
+            var atFieldPower = base.Owner.Creature.GetPower<AtFieldPower>();
+            if (atFieldPower != null)
+            {
+                atFieldPower.ShouldDamageEnemy = true;
+            }
+        }
+        await PowerCmd.Apply<BrokenNotePower>(base.Owner.Creature, 1m, base.Owner.Creature, this);
     }
 }

@@ -1,8 +1,11 @@
+using System.Diagnostics;
 using MegaCrit.Sts2.Core.Combat;
 using MegaCrit.Sts2.Core.Commands;
+using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.Entities.Powers;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
+using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.Powers;
 
 namespace STS2_Tomorin_Mod.Powers;
@@ -17,13 +20,27 @@ public class TakiAtFieldPower : BasePowerModel
 
     private int _appliedStrength;
 
+    public override Task AfterApplied(Creature? applier, CardModel? cardSource)
+    {
+        if (applier == Owner && base.Owner.HasPower<AtFieldPower>())
+        {
+            var power = base.Owner.GetPower<AtFieldPower>();
+            if (power != null)
+            {
+                power.ShouldDamageEnemy = true;
+            }
+        }
+        return base.AfterApplied(applier, cardSource);
+    }
+
     public override async Task AfterPlayerTurnStart(PlayerChoiceContext choiceContext, Player player)
     {
         if (player != base.Owner.Player) return;
 
-        if (base.Owner.HasPower<AtFieldPower>())
+        if (base.Owner.HasPower<AtFieldPower>() && base.Owner.GetPower<AtFieldPower>() != null)
         {
-            int atFieldCount = (int)base.Owner.GetPower<AtFieldPower>().Amount;
+            var power = base.Owner.GetPower<AtFieldPower>();
+            int atFieldCount = (int)power.Amount;
             int strengthGain = atFieldCount * Amount;
             if (strengthGain > 0)
             {

@@ -1,6 +1,6 @@
 {
-  "STS2_TOMORIN_MOD-AT_FIELD_POWER.description": "你的回合结束时，你可以保留当前[gold]心之壁[/gold]层数的[gold]格挡[/gold]；\n被攻击时，反击造成伤害；受到伤害时，[gold]心之壁[/gold]减少那个数值的层数。\n回合开始时，[gold]心之壁[/gold]层数减半。",
-  "STS2_TOMORIN_MOD-AT_FIELD_POWER.smartDescription": "你的回合结束时，你可以保留[blue]{Amount}[/blue][gold]点格挡[/gold]；\n被攻击时，反击造成[blue]{Amount}[/blue]点伤害；受到伤害时，[gold]心之壁[/gold]减少那个数值的层数。\n回合开始时，[gold]心之壁[/gold]层数减半。",
+  "STS2_TOMORIN_MOD-AT_FIELD_POWER.description": "你的回合结束时，你可以保留当前[gold]心之壁[/gold]层数的[gold]格挡[/gold]；\n受到伤害时，[gold]心之壁[/gold]减少那个数值的层数。\n回合开始时，[gold]心之壁[/gold]层数-[blue]3[/blue]。",
+  "STS2_TOMORIN_MOD-AT_FIELD_POWER.smartDescription": "你的回合结束时，你可以保留[blue]{Amount}[/blue][gold]点格挡[/gold]；\n受到伤害时，[gold]心之壁[/gold]减少那个数值的层数。\n回合开始时，[gold]心之壁[/gold]层数-[blue]3[/blue]。",
   "STS2_TOMORIN_MOD-AT_FIELD_POWER.title": "心之壁",
   "STS2_TOMORIN_MOD-CUSTOM_CONSTRICT_POWER.description": "你存活时，在敌人的回合结束时受到[blue]1[/blue]点伤害。",
   "STS2_TOMORIN_MOD-CUSTOM_CONSTRICT_POWER.smartDescription": "你存活时，在敌人的回合结束时受到[blue]{Amount}[/blue]点伤害。",
@@ -9,7 +9,7 @@
   "STS2_TOMORIN_MOD-RAANA_STUDIO_POWER.smartDescription": "每当你触发[gold]作词[/gold]时，获得{Amount}{Energy:energyIcons()}",
   "STS2_TOMORIN_MOD-RAANA_STUDIO_POWER.title": "猫窝般的LiveHouse",
   "STS2_TOMORIN_MOD-BROKEN_NOTE_POWER.description": "本回合[gold]心之壁[/gold]不会因为敌人的攻击而减少",
-  "STS2_TOMORIN_MOD-BROKEN_NOTE_POWER.smartDescription": "本回合[gold]心之壁[/gold]不会因为敌人的攻击而减少",
+  "STS2_TOMORIN_MOD-BROKEN_NOTE_POWER.smartDescription": "本回合[gold]心之壁[/gold]不会因为敌人的攻击而减少，每次受到攻击时，对敌人反弹[gold]心之壁[/gold]层数的伤害。",
   "STS2_TOMORIN_MOD-BROKEN_NOTE_POWER.title": "满是划痕的笔记本",
   "STS2_TOMORIN_MOD-UTAKOTOBA_POWER.description": "保留当前能量进入下回合",
   "STS2_TOMORIN_MOD-UTAKOTOBA_POWER.smartDescription": "保留当前能量进入下回合",

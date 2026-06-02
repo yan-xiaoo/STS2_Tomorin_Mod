@@ -27,6 +27,8 @@ public class AtFieldPower : BasePowerModel
     public override bool AllowNegative => false;
 
     public static bool ShouldDeduceAtFieldPower = true;
+    // 心之壁是否会反伤，初始为 false，通过消耗“满是划痕的笔记本”可以开启一个回合，通过”泪水之名“能力可以永久开启。
+    public bool ShouldDamageEnemy = false;
 
     protected override List<IHoverTip> ExtraHoverTips =>
     [
@@ -93,18 +95,29 @@ public class AtFieldPower : BasePowerModel
     }
 
     /// <summary>
-    /// 当前心之壁层数减半
-    /// 如果有“曾经的归宿”则不减半
+    /// 当前心之壁层数 -3 
+    /// 如果有“曾经的归宿”则不减少
     /// </summary>
     /// <param name="side"></param>
     /// <param name="combatState"></param>
     /// <returns></returns>
     public override async Task AfterSideTurnStart(CombatSide side, CombatState combatState)
     {
-        if (side == Owner.Side && !Owner.HasPower<OnceHomePower>() && !Owner.HasPower<TakiAtFieldPower>())
+        if (side == Owner.Side)
         {
-            int amount = Amount / 2;
-            await PowerCmd.ModifyAmount(this, amount - Amount, null, null);
+            // 心之壁是否减少
+            // 如果具有“曾经的归宿”效果或者立希的效果则不减少
+            if (!Owner.HasPower<OnceHomePower>() && !Owner.HasPower<TakiAtFieldPower>())
+            {     
+                int amount = Amount - 3;
+                await PowerCmd.ModifyAmount(this, amount - Amount, null, null);
+            }
+            // 心之壁是否对敌人反伤
+            // 如果不具有“泪水之名”能力或立希的效果则强制关闭反伤
+            if (!Owner.HasPower<NameOfTearPower>() && !Owner.HasPower<TakiAtFieldPower>())
+            {
+                ShouldDamageEnemy = false;
+            }
         }
     }
 
@@ -122,11 +135,14 @@ public class AtFieldPower : BasePowerModel
     {
         if (target == base.Owner && dealer != null && (props.IsPoweredAttack_() || cardSource is Omnislice))
         {
-            //是否伤害翻倍
-            var damage = Amount * (Owner.HasPower<NameOfTearPower>() ? 2 : 1);
-            Flash();
-            await CreatureCmd.Damage(choiceContext, dealer, damage, ValueProp.Unpowered | ValueProp.SkipHurtAnim,
+            if (ShouldDamageEnemy)
+            {
+                //是否伤害翻倍
+                var damage = this.Amount;
+                Flash();
+                await CreatureCmd.Damage(choiceContext, dealer, damage, ValueProp.Unpowered | ValueProp.SkipHurtAnim,
                 base.Owner, null);
+            }
         }
     }
 
