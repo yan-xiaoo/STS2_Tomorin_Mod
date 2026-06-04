@@ -13,5 +13,6 @@ build/
 *.user
 global.json
 build/STS2_Tomorin_Mod.pck
+html_source_tmp/**
 
 .DS_Store
