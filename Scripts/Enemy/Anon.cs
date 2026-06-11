@@ -34,14 +34,14 @@ public class Anon : CustomMonsterModel
 
     //生成状态牌数量
     private int _stateCount = 1;
-    private int _secondPhaseStateCount = 5;
+    private int _secondPhaseStateCount = 3;
 
     //攻击部分
     //一阶段
     private int NormalSingleAtk => AscensionHelper.GetValueIfAscension(AscensionLevel.DeadlyEnemies, 21, 18);
     private int NormalMultiAtk => AscensionHelper.GetValueIfAscension(AscensionLevel.DeadlyEnemies, 6, 5);
     private int NormalMultiCount = 3;
-    private int NormalBlockNum => AscensionHelper.GetValueIfAscension(AscensionLevel.DeadlyEnemies, 23, 20);
+    private int NormalBlockNum => AscensionHelper.GetValueIfAscension(AscensionLevel.DeadlyEnemies, 18, 15);
 
     //是否触发语音
     private bool _isSpeak = false;
@@ -296,7 +296,7 @@ public class Anon : CustomMonsterModel
     private async Task RunPhaseTwoState(IReadOnlyList<Creature> targets)
     {
         //TODO 动画，特效
-        await PowerCmd.Apply<LessDrawNextTurnPower>(targets, 2, this.Creature, null);
+        await PowerCmd.Apply<LessDrawNextTurnPower>(targets, 1, this.Creature, null);
 
         TalkCmd.Play(_speakRun2, base.Creature, _anonColor);
     }

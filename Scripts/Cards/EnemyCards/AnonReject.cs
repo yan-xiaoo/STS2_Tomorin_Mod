@@ -12,7 +12,7 @@ using STS2_Tomorin_Mod.Cards.Base;
 namespace STS2_Tomorin_Mod.Cards;
 
 [Pool(typeof(CurseCardPool))]
-public class AnonReject() : BaseCardModel(-1, CardType.Curse, CardRarity.Curse, TargetType.None)
+public class AnonReject() : BaseCardModel(-1, CardType.Status, CardRarity.Status, TargetType.None)
 {
     public override int MaxUpgradeLevel => 0;
 
