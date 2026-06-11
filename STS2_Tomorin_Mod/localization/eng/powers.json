@@ -16,5 +16,8 @@
   "STS2_TOMORIN_MOD-TAKI_ADD_DAMAGE_POWER.smartDescription": "Whenever a card is Exhausted, your next Attack deals double damage.",
   "STS2_TOMORIN_MOD-TAKI_AT_FIELD_POWER.title": "AT Field Boost",
   "STS2_TOMORIN_MOD-TAKI_AT_FIELD_POWER.description": "At the start of each turn, gain temporary Strength equal to your AT Field. AT Field no longer halves at turn start.",
-  "STS2_TOMORIN_MOD-TAKI_AT_FIELD_POWER.smartDescription": "At the start of each turn, gain temporary Strength equal to your AT Field. AT Field no longer halves at turn start."
+  "STS2_TOMORIN_MOD-TAKI_AT_FIELD_POWER.smartDescription": "At the start of each turn, gain temporary Strength equal to your AT Field. AT Field no longer halves at turn start.",
+  "STS2_TOMORIN_MOD-EPIPHANY_FLASH_POWER.title": "Epiphany Flash",
+  "STS2_TOMORIN_MOD-EPIPHANY_FLASH_POWER.description": "Whenever you Exhaust a card, gain 1 AT Field.",
+  "STS2_TOMORIN_MOD-EPIPHANY_FLASH_POWER.smartDescription": "Whenever you Exhaust a card, gain {Amount} AT Field."
 }

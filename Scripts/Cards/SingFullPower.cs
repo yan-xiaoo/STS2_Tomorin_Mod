@@ -17,7 +17,7 @@ namespace STS2_Tomorin_Mod.Cards;
 
 /// <summary>
 /// 全力歌唱
-/// 1费 金卡 造成9-12点伤害。移除自身所有心之壁，每移除一层额外造成3-4点伤害
+/// 1费 金卡 造成12-15点伤害。移除自身所有心之壁，每移除一层额外造成1-2点伤害
 /// </summary>
 [Pool(typeof(TomorinCardPool))]
 public class SingFullPower() : BaseCardModel(1, CardType.Attack, CardRarity.Rare, TargetType.AnyEnemy)
@@ -29,8 +29,8 @@ public class SingFullPower() : BaseCardModel(1, CardType.Attack, CardRarity.Rare
         get
         {
             var list = base.CanonicalVars.ToList();
-            list.Add(new CalculationBaseVar(9));
-            list.Add(new ExtraDamageVar(3));
+            list.Add(new CalculationBaseVar(12));
+            list.Add(new ExtraDamageVar(1));
             list.Add(new CalculatedDamageVar(ValueProp.Move).WithMultiplier(GetDamageCount));
             return list;
         }

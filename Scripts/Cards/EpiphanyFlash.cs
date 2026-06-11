@@ -1,4 +1,4 @@
-﻿using BaseLib.Utils;
+using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
@@ -11,39 +11,38 @@ using STS2_Tomorin_Mod.Powers;
 namespace STS2_Tomorin_Mod.Cards;
 
 /// <summary>
-/// 泪水之名
-/// 蓝色 能力 1费 自身心之壁造成的伤害翻倍    
+/// 灵光乍现
+/// 非凡能力 1费 每当你消耗一张牌时，获得3->4层心之壁
 /// </summary>
-
 [Pool(typeof(TomorinCardPool))]
-public class NameOfTear() : BaseCardModel(1, CardType.Power, CardRarity.Rare, TargetType.Self)
+public class EpiphanyFlash() : BaseCardModel(1, CardType.Power, CardRarity.Uncommon, TargetType.Self)
 {
-    public override IEnumerable<CardKeyword> CanonicalKeywords
-    {
-        get
-        {
-            var list = base.CanonicalKeywords.ToList();
-            list.Add(CardKeyword.Ethereal);
-            return list;
-        }
-    }
+    protected override IEnumerable<DynamicVar> CanonicalVars =>
+    [
+        new PowerVar<EpiphanyFlashPower>(3m)
+    ];
+
     protected override IEnumerable<IHoverTip> ExtraHoverTips
     {
         get
         {
             var list = base.ExtraHoverTips.ToList();
-            list.Add(HoverTipFactory.FromPower<NameOfTearPower>());
+            list.Add(HoverTipFactory.FromPower<AtFieldPower>());
             return list;
         }
     }
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        await PowerCmd.Apply<NameOfTearPower>(Owner.Creature, 1, Owner.Creature, this);
+        await PowerCmd.Apply<EpiphanyFlashPower>(
+            Owner.Creature,
+            DynamicVars["EpiphanyFlashPower"].BaseValue,
+            Owner.Creature,
+            this);
     }
 
     protected override void OnUpgrade()
     {
-        RemoveKeyword(CardKeyword.Ethereal);
+        DynamicVars["EpiphanyFlashPower"].UpgradeValueBy(1m);
     }
 }
