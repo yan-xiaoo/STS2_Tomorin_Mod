@@ -46,10 +46,10 @@ public static class ComposeCmd
             var cardType = kv.Key;
             var requiredCount = kv.Value;
 
-            cardsToConsume.AddRange(await CardSelectCmd.FromHand(
+            cardsToConsume.AddRange(await DisExhaustCmd.FromHandForExhaust(
                 choiceContext,
                 player,
-                new CardSelectorPrefs(CardSelectorPrefs.ExhaustSelectionPrompt, requiredCount),
+                requiredCount,
                 model => model.Type == cardType || model.CanonicalKeywords.Contains(CustomKeyWord.Epiphany),
                 source));
         }
@@ -98,7 +98,7 @@ public static class ComposeCmd
             await CardPileCmd.AddGeneratedCardToCombat(
                 newCard,
                 PileType.Hand,
-                addedByPlayer: true);
+                player);
         }
 
         // 5. 消耗source卡牌（自身消失）

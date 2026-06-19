@@ -15,7 +15,7 @@ public class ActModelBossOrderPatch
 {
     static IEnumerable<MethodInfo?> TargetMethods()
     {
-        var parentType = typeof(ActModel); 
+        var parentType = typeof(ActModel);
 
         var classList = AppDomain.CurrentDomain.GetAssemblies()
             .Where(assembly => assembly.FullName != null && assembly.FullName.Contains("sts2"))
@@ -40,6 +40,12 @@ public class ActModelBossOrderPatch
                 __result = [ModelDb.Encounter<AnonBoss>()];
             if (__instance is Overgrowth)
                 __result = [ModelDb.Encounter<TakiBoss>()];
+            if (__instance is Glory)
+                __result =
+                [
+                    ModelDb.Encounter<CrychicPhatomBoss>(),
+                    ModelDb.Encounter<OblivionisBoss>()
+                ];
         }
     }
 }

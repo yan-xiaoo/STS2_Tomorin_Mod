@@ -11,6 +11,7 @@ using MegaCrit.Sts2.Core.ValueProps;
 using STS2_Tomorin_Mod.CardPools;
 using STS2_Tomorin_Mod.Cards.Base;
 using STS2_Tomorin_Mod.Cards.Collections;
+using STS2_Tomorin_Mod.Commands;
 using STS2_Tomorin_Mod.Localization.CustomEnums;
 using STS2_Tomorin_Mod.Powers;
 
@@ -54,10 +55,10 @@ public class AtField : BaseCardModel
         //如果有状态牌，选择一张状态牌并 Exhaust
         if (IsPlayable)
         {
-            var cardsToExhaust = await CardSelectCmd.FromHand(
+            var cardsToExhaust = await DisExhaustCmd.FromHandForExhaust(
                 choiceContext,
                 Owner,
-                new CardSelectorPrefs(CardSelectorPrefs.ExhaustSelectionPrompt, 1),
+                1,
                 model => model.Type == CardType.Status,
                 this);
             foreach (var card in cardsToExhaust)
@@ -67,11 +68,11 @@ public class AtField : BaseCardModel
         }
 
         await CreatureCmd.GainBlock(base.Owner.Creature, base.DynamicVars.Block, cardPlay);
-        await PowerCmd.Apply<AtFieldPower>(base.Owner.Creature, base.DynamicVars["AtFieldPower"].BaseValue,
+        await PowerCmd.Apply<AtFieldPower>(choiceContext, base.Owner.Creature, base.DynamicVars["AtFieldPower"].BaseValue,
             base.Owner.Creature, this);
 
         // var brokenNote = base.CombatState!.CreateCard<BrokenNote>(Owner);
-        // await CardPileCmd.AddGeneratedCardToCombat(brokenNote, PileType.Hand, addedByPlayer: true);
+        // await CardPileCmd.AddGeneratedCardToCombat(brokenNote, PileType.Hand, Owner);
     }
 
     protected override void OnUpgrade()

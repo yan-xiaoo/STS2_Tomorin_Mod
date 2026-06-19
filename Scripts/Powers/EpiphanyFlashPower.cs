@@ -20,6 +20,6 @@ public class EpiphanyFlashPower : BasePowerModel
             return;
 
         Flash();
-        await PowerCmd.Apply<AtFieldPower>(Owner, Amount, Owner, null);
+        await PowerCmd.Apply<AtFieldPower>(choiceContext, Owner, Amount, Owner, null);
     }
 }

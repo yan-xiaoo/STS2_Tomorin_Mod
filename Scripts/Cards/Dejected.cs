@@ -29,7 +29,7 @@ public class Dejected() : BaseCardModel(
 
         // 将一张满是划痕的笔记本加入手牌
         var brokenNote = base.CombatState!.CreateCard<BrokenNote>(Owner);
-        await CardPileCmd.AddGeneratedCardToCombat(brokenNote, PileType.Hand, addedByPlayer: true);
+        await CardPileCmd.AddGeneratedCardToCombat(brokenNote, PileType.Hand, Owner);
     }
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips

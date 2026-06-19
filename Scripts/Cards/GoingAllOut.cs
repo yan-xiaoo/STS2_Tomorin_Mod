@@ -14,12 +14,12 @@ namespace STS2_Tomorin_Mod.Cards;
 
 /// <summary>
 /// 主唱太拼命了
-/// 3->2费 消耗 修改对方意图 改成1点伤害
+/// 3->2费 消耗 修改对方意图 改成1*3
 /// </summary>
 [Pool(typeof(TomorinCardPool))]
 public class GoingAllOut() : BaseCardModel(3, CardType.Skill, CardRarity.Rare, TargetType.AnyEnemy)
 {
-    public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Exhaust];
+    public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Exhaust, CardKeyword.Retain];
 
     protected override IEnumerable<DynamicVar> CanonicalVars
     {
@@ -46,7 +46,7 @@ public class GoingAllOut() : BaseCardModel(3, CardType.Skill, CardRarity.Rare, T
             List<MonsterState> stateLog = creature.Monster.MoveStateMachine.StateLog;
             var nextMoveId = stateLog.Last().Id;
             
-            MoveState state = new MoveState("SINGLE_ATTACK", SingleAttack, new SingleAttackIntent(1))
+            MoveState state = new MoveState("MULTI_ATTACK", MultiAttack, new MultiAttackIntent(1, 3))
             {
                 FollowUpStateId = nextMoveId,
                 MustPerformOnceBeforeTransitioning = true
@@ -54,9 +54,9 @@ public class GoingAllOut() : BaseCardModel(3, CardType.Skill, CardRarity.Rare, T
             creature.Monster.SetMoveImmediate(state);
         }
         
-        async Task SingleAttack(IReadOnlyList<Creature> c)
+        async Task MultiAttack(IReadOnlyList<Creature> c)
         {
-            await DamageCmd.Attack(1).FromMonster(creature.Monster)
+            await DamageCmd.Attack(1).WithHitCount(3).FromMonster(creature.Monster)
                 .WithAttackerAnim("Attack", 0.35f)
                 .WithHitFx("vfx/vfx_attack_slash")
                 .OnlyPlayAnimOnce()

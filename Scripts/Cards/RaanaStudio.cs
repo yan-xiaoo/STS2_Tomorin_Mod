@@ -28,12 +28,13 @@ public class RaanaStudio : BaseCardModel
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        await PowerCmd.Apply<RaanaStudioPower>(base.Owner.Creature, 1, base.Owner.Creature, this);
+        await PowerCmd.Apply<RaanaStudioPower>(choiceContext, base.Owner.Creature, 1, base.Owner.Creature, this);
 
     }
     
     protected override void OnUpgrade()
     {
-        AddKeyword(CardKeyword.Innate);
+        // AddKeyword(CardKeyword.Innate);
+        MockSetEnergyCost(new CardEnergyCost(this, 0, false));
     }
 }

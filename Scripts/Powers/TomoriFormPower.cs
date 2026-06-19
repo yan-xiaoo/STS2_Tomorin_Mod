@@ -7,6 +7,7 @@ using MegaCrit.Sts2.Core.Factories;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Models;
 using STS2_Tomorin_Mod.CardPools;
+using STS2_Tomorin_Mod.Commands;
 
 namespace STS2_Tomorin_Mod.Powers;
 
@@ -42,14 +43,14 @@ public class TomoriFormPower : BasePowerModel
             if (cardModel != null)
             {
                 cardModel.EnergyCost.SetThisTurnOrUntilPlayed(0);
-                await CardPileCmd.AddGeneratedCardToCombat(cardModel, PileType.Hand, addedByPlayer: true);
+                await CardPileCmd.AddGeneratedCardToCombat(cardModel, PileType.Hand, Owner.Player);
             }
         }
 
 
         // Exhaust 1 card from hand
-        var exhaust = await CardSelectCmd.FromHand(choiceContext, base.Owner.Player,
-            new CardSelectorPrefs(CardSelectorPrefs.ExhaustSelectionPrompt, Amount),
+        var exhaust = await DisExhaustCmd.FromHandForExhaust(choiceContext, base.Owner.Player,
+            Amount,
             null, this);
         foreach (var card in exhaust)
         {

@@ -35,6 +35,7 @@ public class EpiphanyFlash() : BaseCardModel(1, CardType.Power, CardRarity.Uncom
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         await PowerCmd.Apply<EpiphanyFlashPower>(
+            choiceContext,
             Owner.Creature,
             DynamicVars["EpiphanyFlashPower"].BaseValue,
             Owner.Creature,

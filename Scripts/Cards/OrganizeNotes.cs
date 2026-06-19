@@ -64,6 +64,7 @@ public class OrganizeNotes() : BaseCardModel(1, CardType.Skill, CardRarity.Uncom
             cardPlay);
 
         await PowerCmd.Apply<AtFieldPower>(
+            choiceContext,
             Owner.Creature,
             DynamicVars[AtFieldPower.DefaultName].BaseValue * exhaustedCount,
             Owner.Creature,

@@ -4,6 +4,7 @@ using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Extensions;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
+using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Models;
 using STS2_Tomorin_Mod.CardPools;
 using STS2_Tomorin_Mod.Cards.Base;
@@ -22,6 +23,16 @@ public class Gacha : BaseCardModel
     public Gacha() : base(1, CardType.Skill, CardRarity.Common, TargetType.Self) { }
 
     public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Exhaust];
+
+    protected override IEnumerable<IHoverTip> ExtraHoverTips
+    {
+        get
+        {
+            var list = base.ExtraHoverTips.ToList();
+            list.Add(HoverTipFactory.FromCard<StarStone>());
+            return list;
+        }
+    }
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
@@ -48,12 +59,12 @@ public class Gacha : BaseCardModel
             if (selected != null)
             {
                 selected.EnergyCost.SetThisTurn(0);
-                await CardPileCmd.AddGeneratedCardToCombat(selected, PileType.Hand, addedByPlayer: true);
+                await CardPileCmd.AddGeneratedCardToCombat(selected, PileType.Hand, Owner);
             }
         }
 
         var starStone = base.CombatState!.CreateCard<StarStone>(base.Owner);
-        await CardPileCmd.AddGeneratedCardToCombat(starStone, PileType.Hand, addedByPlayer: true);
+        await CardPileCmd.AddGeneratedCardToCombat(starStone, PileType.Hand, Owner);
     }
 
     protected override void OnUpgrade()
