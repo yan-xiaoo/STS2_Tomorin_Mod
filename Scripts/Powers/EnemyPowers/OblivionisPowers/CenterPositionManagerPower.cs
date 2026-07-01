@@ -50,7 +50,7 @@ public class CenterPositionManagerPower : BasePowerModel
         typeof(Oblivionis)
     ];
 
-    private const decimal HpReductionPerKill = 150m;
+    public decimal HpReductionPerKill = 150m;
     private const decimal Phase2HpBonus = 500m;
 
     public override PowerType Type => PowerType.Buff;
@@ -171,11 +171,18 @@ public class CenterPositionManagerPower : BasePowerModel
             await ReduceOblivionisMaxHp(HpReductionPerKill);
             await ApplyKillBuffToAllPlayers(creature);
 
-            if (data.killRegistry.Count >= 4)
+            // if (data.killRegistry.Count >= 4)
+            // {
+            //     // 所有子Boss死亡 → 二阶段
+            //     await TransitionToPhase2(data);
+            // }
+            // else if (data.centerPositionCreature?.Monster is Oblivionis oblivionis)
+            if (data.centerPositionCreature?.Monster is Oblivionis oblivionis)
             {
-                // 所有子Boss死亡 → 二阶段
-                await TransitionToPhase2(data);
+                // Oblivionis为C位时，队友死亡会切到对应死亡数量状态机的第1招
+                oblivionis.SetPhase1CStateByDeadAllies(data.killRegistry.Count);
             }
+            
             // 如果C位死亡，自动切换
             if (creature == data.centerPositionCreature && data.cPositionMechanismActive)
             {
@@ -250,7 +257,7 @@ public class CenterPositionManagerPower : BasePowerModel
         }
 
         // 新C位切换到C位行为
-        SwitchToCState(newTarget.Monster);
+        SwitchToCState(newTarget.Monster, data.killRegistry.Count);
 
         data.centerPositionCreature = newTarget;
        
@@ -273,11 +280,11 @@ public class CenterPositionManagerPower : BasePowerModel
         PowerCmd.Remove<PositionZeroShowPower>(monster.Creature);
     }
 
-    private static void SwitchToCState(MonsterModel? monster)
+    private static void SwitchToCState(MonsterModel? monster, int deadAllyCount)
     {
         switch (monster)
         {
-            case Oblivionis o: o.SetMoveImmediate(o.CState); break;
+            case Oblivionis o: o.SetPhase1CStateByDeadAllies(deadAllyCount); break;
             case Doloris d: d.SetMoveImmediate(d.CState); break;
             case Mortis m: m.SetMoveImmediate(m.CState); break;
             case Timoris t: t.SetMoveImmediate(t.CState); break;
@@ -302,7 +309,7 @@ public class CenterPositionManagerPower : BasePowerModel
                     if (data.centerPositionCreature != null && data.centerPositionCreature.IsAlive)
                         SwitchToNonCState(data.centerPositionCreature.Monster);
 
-                    SwitchToCState(enemy.Monster);
+                    SwitchToCState(enemy.Monster, data.killRegistry.Count);
                     data.centerPositionCreature = enemy;
                 }
                 return;
@@ -316,6 +323,15 @@ public class CenterPositionManagerPower : BasePowerModel
     {
         data.cPositionMechanismActive = false;
         data.phaseState = 1;
+
+        // 普通二阶段转场：隐藏Boss路径由OblivionisHiddenRevivalPower单独处理。
+        var subBosses = base.CombatState.Enemies
+            .Where(e => IsSubBoss(e) && e.IsAlive)
+            .ToList();
+        foreach (var subBoss in subBosses)
+        {
+            await CreatureCmd.Escape(subBoss);
+        }
 
         // 移除所有敌人的Intangible
         foreach (var enemy in base.CombatState.Enemies)
