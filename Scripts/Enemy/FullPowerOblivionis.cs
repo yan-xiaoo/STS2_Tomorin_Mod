@@ -38,42 +38,37 @@ public class FullPowerOblivionis : CustomMonsterModel
 
     public override string? CustomVisualPath =>
         "res://STS2_Tomorin_Mod/scenes/creature_visuals/enemies/full_power_oblivionis.tscn";
-    
-    public override CreatureAnimator GenerateAnimator(MegaSprite controller)
-    {
-        AnimState loop = new AnimState("idle_loop", true);
-        AnimState state1 = new AnimState("cast");
-        AnimState state2 = new AnimState("attack");
-        AnimState state3 = new AnimState("hurt");
-        AnimState state4 = new AnimState("die");
-        AnimState start = new AnimState("start");
-        state1.NextState = loop;
-        state2.NextState = loop;
-        state3.NextState = loop;
-        start.NextState = loop;
-        CreatureAnimator animator = new CreatureAnimator(loop, controller);
-        animator.AddAnyState("Idle", loop);
-        animator.AddAnyState("Cast", state1);
-        animator.AddAnyState("Attack", state2);
-        animator.AddAnyState("Dead", state4);
-        animator.AddAnyState("Hit", state3);
-        animator.AddAnyState("Start", start);
-        return animator;
-    }
 
+    public override IEnumerable<string> AssetPaths
+    {
+        get
+        {
+            foreach (var assetPath in base.AssetPaths)
+                yield return assetPath;
+
+            yield return "res://STS2_Tomorin_Mod/scenes/creature_visuals/enemies/full_power_oblivionis.tscn";
+            yield return "res://STS2_Tomorin_Mod/Enemies/FullPowerOblvns/fullPowerOblvns.tres";
+            yield return "res://STS2_Tomorin_Mod/Enemies/FullPowerOblvns/fullPowerOblvns.skel";
+            yield return "res://STS2_Tomorin_Mod/Enemies/FullPowerOblvns/char_4182_oblvns_avemujica_1.atlas";
+            yield return "res://STS2_Tomorin_Mod/Enemies/FullPowerOblvns/char_4182_oblvns_avemujica_1.png";
+        }
+    }
+    
     public async Task Init()
     {
         // SfxCmd.Play("start");
         // await Cmd.Wait(2);
-        await CreatureCmd.TriggerAnim(base.Creature, "Start", 0);
         await Cmd.Wait(1);
         // await CreatureCmd.TriggerAnim(base.Creature, "Attack", 3);
         // // Log.Warn("测试Log，正在播放动画！！！");
         // await CreatureCmd.TriggerAnim(base.Creature, "TestName", 3);
 
-        var power = await PowerCmd.Apply<OblivionisHiddenInheritPower>(new ThrowingPlayerChoiceContext(), Creature, 1, base.Creature, null);
-        await power.SetNewPower();
-        await PowerCmd.Apply<OblivionisHiddenBlockPower>(new ThrowingPlayerChoiceContext(), Creature, 1, base.Creature, null);
+        var power = await PowerCmd.Apply<OblivionisHiddenInheritPower>(
+            new ThrowingPlayerChoiceContext(), Creature, 1, base.Creature, null, silent: true);
+        if (power != null)
+            await power.SetNewPower(silent: true);
+        await PowerCmd.Apply<OblivionisHiddenBlockPower>(
+            new ThrowingPlayerChoiceContext(), Creature, 1, base.Creature, null, silent: true);
     }
 
     protected override MonsterMoveStateMachine GenerateMoveStateMachine()

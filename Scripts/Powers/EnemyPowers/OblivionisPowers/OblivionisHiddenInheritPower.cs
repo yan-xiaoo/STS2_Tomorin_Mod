@@ -49,7 +49,7 @@ public class OblivionisHiddenInheritPower : BasePowerModel
         await SetNewPower();
     }
 
-    public async Task SetNewPower()
+    public async Task SetNewPower(bool silent = false)
     {
         var rng = Owner.Monster.Rng;
         int buffId = rng.NextInt(0, 3);
@@ -63,16 +63,16 @@ public class OblivionisHiddenInheritPower : BasePowerModel
         switch (buffId)
         {
             case (int)InheritedPassive.Amoris:
-                _curPower = await PowerCmd.Apply<AmorisPassivePower>(context, Owner, 1, Owner, null);
+                _curPower = await PowerCmd.Apply<AmorisPassivePower>(context, Owner, 1, Owner, null, silent);
                 break;
             case (int)InheritedPassive.Timoris:
-                _curPower = await PowerCmd.Apply<TimorisPassivePower>(context, Owner, 1, Owner, null);
+                _curPower = await PowerCmd.Apply<TimorisPassivePower>(context, Owner, 1, Owner, null, silent);
                 break;
             case (int)InheritedPassive.Doloris:
-                _curPower = await PowerCmd.Apply<DolorisPassivePower>(context, Owner, 1, Owner, null);
+                _curPower = await PowerCmd.Apply<DolorisPassivePower>(context, Owner, 1, Owner, null, silent);
                 break;
             case (int)InheritedPassive.Mortis:
-                _curPower = await PowerCmd.Apply<MortisPassivePower>(context, Owner, 1, Owner, null);
+                _curPower = await PowerCmd.Apply<MortisPassivePower>(context, Owner, 1, Owner, null, silent);
                 break;
             default:
                 Log.Error("未找到对应Buff！当前随机出来的buffId：" + buffId);
