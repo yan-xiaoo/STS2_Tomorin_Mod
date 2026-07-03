@@ -1,17 +1,21 @@
 [gd_scene load_steps=3 format=3 uid="uid://uhwurd2b28xq"]
 
-[ext_resource type="Script" uid="uid://c2yrfx7bd5gc2" path="res://src/Core/Nodes/Combat/NCreatureVisuals.cs" id="1_dojqa"]
-[ext_resource type="Texture2D" uid="uid://b4fcqpbq2855" path="res://STS2_Tomorin_Mod/Enemies/FullPowerOblvns/char_4182_oblvns_avemujica_1.png" id="2_dojqa"]
+[ext_resource type="Script" uid="uid://c2yrfx7bd5gc2" path="res://src/Core/Nodes/Combat/NCreatureVisuals.cs" id="1"]
+[ext_resource type="SpineSkeletonDataResource" uid="uid://c2eqc7y2rd0j4" path="res://STS2_Tomorin_Mod/Enemies/FullPowerOblvns/fullPowerOblvns.tres" id="2"]
 
 [node name="FullPowerOblvns" type="Node2D"]
-script = ExtResource("1_dojqa")
+script = ExtResource("1")
 metadata/_edit_group_ = true
 
-[node name="Visuals" type="Sprite2D" parent="."]
+[node name="Visuals" type="SpineSprite" parent="."]
 unique_name_in_owner = true
-position = Vector2(4, -154)
-scale = Vector2(-0.85, 0.85)
-texture = ExtResource("2_dojqa")
+position = Vector2(4, -12.000015)
+scale = Vector2(-0.7, 0.7)
+skeleton_data_res = ExtResource("2")
+preview_skin = "Default"
+preview_animation = "-- Empty --"
+preview_frame = false
+preview_time = 0.0
 
 [node name="Bounds" type="Control" parent="."]
 unique_name_in_owner = true
